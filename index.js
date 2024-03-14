@@ -5,7 +5,7 @@ const CurrentAge = document.getElementById("age");
 function CalculateAge () {
     const BirthdAy = BirthDay.value;
     if(BirthdAy === "") {
-        alert("Please Enter Your Birth Date");
+        CurrentAge.innerText = "Please Enter Your Birth Date";
     } else {
         const NewAge = getAge(BirthdAy);
         CurrentAge.innerText = `Your age is ${NewAge} ${NewAge > 1 ? "years" : "year"} old`;
@@ -20,6 +20,9 @@ function getAge(BirthdAy) {
 
     if (month <0 || (month === 0 && currentDate.getDate() < birthDate.getDate())) {
         NewAge--;
+    }
+    if (NewAge > 9999) {
+        NewAge = 9999;
     }
     return NewAge;
 }
